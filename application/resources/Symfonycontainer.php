@@ -75,7 +75,7 @@ class Custom_Resource_Symfonycontainer extends
            
             $this->_checkOptions();
            
-           $this->_sfServiceContainerBuilder = $this->_getContainerBuilder();
+            $this->_sfServiceContainerBuilder = $this->_getContainerBuilder();
         }
 
         return $this->_sfServiceContainerBuilder;
