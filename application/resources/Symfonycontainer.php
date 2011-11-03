@@ -98,7 +98,7 @@ class Custom_Resource_Symfonycontainer extends
         //if we generate class we don't use old file
         if (
             $this->_options['generateContainerClasses'] == 0 && 
-            !file_exists($dumpContainerFile) || 1) {
+            !file_exists($dumpContainerFile)) {
 
             require_once $dumpContainerFile;
             return new $containerClass;            
