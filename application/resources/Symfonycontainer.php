@@ -54,7 +54,9 @@ class Custom_Resource_Symfonycontainer extends
      */
     protected $_sfServiceContainerBuilder = null;
     
-    
+    public function init() {
+        return $this->getSymfonycontainer();
+    }
     /**
      * Returns an instance of sfServiceContainerBuilder  
      * 
@@ -68,7 +70,7 @@ class Custom_Resource_Symfonycontainer extends
      *
      * @return Custom_Resource_Symfonycontainer     
      */
-    public function init() 
+    public function getSymfonycontainer() 
     {
         //check if already exist
         if (null === $this->_sfServiceContainerBuilder) {
@@ -80,6 +82,7 @@ class Custom_Resource_Symfonycontainer extends
 
         return $this->_sfServiceContainerBuilder;
     }
+
     
     /**
      * Return sf container builder
@@ -94,7 +97,7 @@ class Custom_Resource_Symfonycontainer extends
         $dumpContainerFile = $this->_options['dumpFile'];
 
         $containerClass = $this->_options['containerClass'];         
-       
+      
         //if we generate class we don't use old file
         if (
             $this->_options['generateContainerClasses'] == 0 && 
@@ -166,7 +169,7 @@ class Custom_Resource_Symfonycontainer extends
         * we can load the configuration file.
         */
   
-        $fileExtension = pathinfo($configFile, PATHINFO_EXTENSION);
+        $fileExtension = pathinfo($configContainerFile, PATHINFO_EXTENSION);
 
         switch($fileExtension) {
             case 'xml':
@@ -184,7 +187,7 @@ class Custom_Resource_Symfonycontainer extends
                     );
                 break;
         }
-        $containerLoader->load($configFile);
+        $containerLoader->load($configContainerFile);
         
         
     }
